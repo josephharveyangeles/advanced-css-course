@@ -6,7 +6,6 @@
         
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/icon-font.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="shortcut icon" type="image/png" href="img/favicon.png">
         
@@ -38,7 +37,7 @@
             <span class="heading-primary--main">Outdoors</span>
             <span class="heading-primary--sub">is where life happens</span>
           </h1>
-          <a href="#" class="btn btn--white btn--animated">Discover our tours</a>
+          <a href="#section-tours" class="btn btn--white btn--animated">Discover our tours</a>
         </div>
       </header>
       <main>
@@ -63,7 +62,15 @@
             </div>
             <div class="col-1-of-2">
               <div class="composition">
-                <img src="img/nat-1-large.jpg" alt="photo 1" class="composition__photo composition__photo--p1">
+                <!-- 300w means the width px of the image -->
+                <!-- sizes = informs the browser of the approximate width of the image at different viewport width -->
+                <!-- ie: the image is approx 20% when the viewport is 900px, now the browser can properly choose which srcset to download and use.  -->
+                <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                    src="img/nat-1-large.jpg"
+                    sizes="(max-width: 900px) 20vw, (max-width: 600) 30vw, 300px"
+                    alt="Photo 1"
+                    class="composition__photo composition__photo--p1"
+                >
                 <img src="img/nat-2-large.jpg" alt="photo 2" class="composition__photo composition__photo--p2">
                 <img src="img/nat-3-large.jpg" alt="photo 3" class="composition__photo composition__photo--p3">
               </div>
@@ -112,7 +119,7 @@
           </div>
         </section>
 
-        <section class="section-tours">
+        <section class="section-tours" id="section-tours">
           <div class="u-center-text u-margin-bottom-big">
             <h2 class="heading-secondary">
               Most popular tours
@@ -147,7 +154,7 @@
                       <p class="card__price-only">Only</p>
                       <p class="card__price-value">$297</p>
                     </div>
-                    <a href="#" class="btn btn--white">Book now!</a>
+                    <a href="#popup" class="btn btn--white">Book now!</a>
                   </div>
                 </div>
               </div>
@@ -179,7 +186,7 @@
                       <p class="card__price-only">Only</p>
                       <p class="card__price-value">$497</p>
                     </div>
-                    <a href="#" class="btn btn--white">Book now!</a>
+                    <a href="#popup" class="btn btn--white">Book now!</a>
                   </div>
                 </div>
               </div>
@@ -211,7 +218,7 @@
                       <p class="card__price-only">Only</p>
                       <p class="card__price-value">$897</p>
                     </div>
-                    <a href="#" class="btn btn--white">Book now!</a>
+                    <a href="#popup" class="btn btn--white">Book now!</a>
                   </div>
                 </div>
               </div>
@@ -219,7 +226,7 @@
           </div>
 
           <div class="u-center-text u-margin-top-huge">
-            <a href="#" class="btn btn--green">Discover all tours</a>
+            <a href="#section-tours" class="btn btn--green">Discover all tours</a>
           </div>
 
         </section>
@@ -309,7 +316,10 @@
       </main>
       <footer class="footer">
         <div class="footer__logo-box">
-          <img class="footer__logo" src="img/logo-green-2x.png" alt="Full logo-green-2x">
+          <picture class="footer__logo">
+            <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
+            <img class="footer__logo" srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo-green-2x">
+          </picture>
         </div>
         <div class="row">
           <div class="col-1-of-2">
@@ -330,5 +340,24 @@
           </div>
         </div>
       </footer>
+    
+      <div class="popup" id="popup">
+        <div class="popup__content">
+          <div class="popup__left">
+            <img src="img/nat-8.jpg" alt="Tour photo" class="popup__img">
+            <img src="img/nat-9.jpg" alt="Tour photo" class="popup__img">
+          </div>
+          <div class="popup__right">
+            <a href="#section-tours" class="popup__close">&times;</a>
+            <h2 class="heading-secondary u-margin-bottom-small">Start booking now</h2>
+            <h3 class="heading-tertiary u-margin-bottom-small">Important &ndash; Please read these terms before booking</h3>
+            <p class="popup__text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus pariatur iusto, suscipit odio quisquam modi magnam similique totam aliquam in sapiente iure nobis esse, officiis commodi expedita quam facilis dolore! Quaerat laudantium magnam excepturi illo est! Adipisci iusto, quibusdam dolores assumenda deleniti vitae amet debitis commodi fuga sapiente veniam aliquid, asperiores excepturi magni. Et, molestias dicta. Autem minus sequi veniam?
+            </p>
+            <a href="#" class="btn btn--green">Book now</a>
+          </div>
+        </div>
+      </div>
+    
     </body>
 </html>

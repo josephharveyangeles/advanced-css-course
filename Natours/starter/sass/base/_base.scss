@@ -8,9 +8,35 @@
 
 html {
   /*font-size: 10px; /* root pixel size, rem reference (1 rem)*/
-  font-size: 62.5%;
+  font-size: 62.5%; // 10px (what we want) / 16px (default) = 62.5%
+
+  // @include respond(phone) { Unneccessary, tab-port will handle phone as well
+  //   font-size: 50%; // 1rem = 8px
+  // }
+
+  @include respond(tab-land) { // width < 1200
+    font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) { // width < 900
+    font-size: 50%; // 1rem = 8px
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12, 12/16
+  }
 }
 
 body {
   box-sizing: border-box;
+  padding: 1rem;
+
+  @include respond(tab-port) { // width < 900
+    padding: 0;
+  }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
 }
